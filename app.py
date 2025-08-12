@@ -24,7 +24,7 @@ class ResponseObjects(BaseModel):
 class InferlessPythonModel:
     def initialize(self):
         model_name = "Qwen/Qwen-Image"
-        pipe = DiffusionPipeline.from_pretrained(model_name, torch_dtype=torch_dtype).to("cuda")
+        pipe = DiffusionPipeline.from_pretrained(model_name, torch_dtype=torch.bfloat16).to("cuda")
       
     def infer(self, inputs: RequestObjects) -> ResponseObjects:
         image = self.pipe(
